@@ -2,6 +2,7 @@ import 'package:assessment_by_maimunah_ibrahim/views/user_detail_view.dart';
 import 'package:assessment_by_maimunah_ibrahim/views/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:assessment_by_maimunah_ibrahim/api_service.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class UsersListView extends StatelessWidget {
   @override
@@ -50,6 +51,26 @@ class UsersListView extends StatelessWidget {
                                 //     ),
                                 //   ),
                                 // ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.circular(10.0)),
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      child: CachedNetworkImage(
+                                        height: 45,
+                                        width: 45,
+                                        imageUrl: _user.picture,
+                                        progressIndicatorBuilder: (context, url,
+                                                downloadProgress) =>
+                                            CircularProgressIndicator(
+                                                value:
+                                                    downloadProgress.progress),
+                                        errorWidget: (context, url, error) =>
+                                            Icon(Icons.error),
+                                      )),
+                                ),
+
                                 Text(
                                   _user.firstName + " " + _user.lastName,
                                   style: TextStyle(
