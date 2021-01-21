@@ -1,7 +1,7 @@
 import 'package:assessment_by_maimunah_ibrahim/views/user_detail_view.dart';
-import 'package:assessment_by_maimunah_ibrahim/views/user_model.dart';
+import 'package:assessment_by_maimunah_ibrahim/models/user_model.dart';
 import 'package:flutter/material.dart';
-import 'package:assessment_by_maimunah_ibrahim/api_service.dart';
+import 'package:assessment_by_maimunah_ibrahim/services/api_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class UsersListView extends StatelessWidget {
