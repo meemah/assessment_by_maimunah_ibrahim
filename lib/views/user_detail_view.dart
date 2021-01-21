@@ -17,11 +17,13 @@ class UserDetailView extends StatelessWidget {
                 "User Detail",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 40.0, bottom: 10.0),
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
-                child: ClipRRect(
+              Hero(
+                tag: _user.id,
+                child: Container(
+                  margin: EdgeInsets.only(top: 40.0, bottom: 10.0),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
+                  child: ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
                     child: CachedNetworkImage(
                       height: MediaQuery.of(context).size.height / 3,
@@ -32,7 +34,9 @@ class UserDetailView extends StatelessWidget {
                               CircularProgressIndicator(
                                   value: downloadProgress.progress),
                       errorWidget: (context, url, error) => Icon(Icons.error),
-                    )),
+                    ),
+                  ),
+                ),
               ),
               UserDetail(
                 title: "Title",

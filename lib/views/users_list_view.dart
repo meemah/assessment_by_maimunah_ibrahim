@@ -14,9 +14,12 @@ class UsersListView extends StatelessWidget {
           child: ListView(
             // physics: BouncingScrollPhysics(),
             children: [
-              Text(
-                "Users",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              Container(
+                margin: EdgeInsets.only(bottom: 10.0),
+                child: Text(
+                  "Users",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
               ),
               FutureBuilder<List<UserData>>(
                   future: apiService.getData(),
@@ -38,24 +41,13 @@ class UsersListView extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                // Container(
-                                //   decoration: BoxDecoration(
-                                //       borderRadius:
-                                //           BorderRadius.circular(10.0)),
-                                //   child: ClipRRect(
-                                //     borderRadius: BorderRadius.circular(10.0),
-                                //     child: Image.network(
-                                //       _user.picture,
-                                //       width: 40,
-                                //       height: 40,
-                                //     ),
-                                //   ),
-                                // ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(10.0)),
-                                  child: ClipRRect(
+                                Hero(
+                                  tag: _user.id,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0)),
+                                    child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10.0),
                                       child: CachedNetworkImage(
                                         height: 45,
@@ -68,9 +60,10 @@ class UsersListView extends StatelessWidget {
                                                     downloadProgress.progress),
                                         errorWidget: (context, url, error) =>
                                             Icon(Icons.error),
-                                      )),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-
                                 Text(
                                   _user.firstName + " " + _user.lastName,
                                   style: TextStyle(
